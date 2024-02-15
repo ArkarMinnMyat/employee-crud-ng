@@ -14,11 +14,12 @@ export class EmployeeService {
 
   constructor(private http:HttpClient) {
     this.getAllEmployees()
-    .subscribe(data => this.employeesSubject.next(data));
+    .subscribe();
   }
 
-  private getAllEmployees():Observable<Employee[]>{
-    return this.http.get<Employee[]>(this.REST_API_URL);
+  public getAllEmployees():Observable<Employee[]>{
+    return this.http.get<Employee[]>(this.REST_API_URL)
+                .pipe(tap(data => this.employeesSubject.next(data)));
   }
 
   public createEmployee(emp:Employee):Observable<Employee>{

@@ -47,7 +47,10 @@ export class EmployeeFormComponent {
       .subscribe(
         {next: data => console.log(data),
         error: err => console.log(err),
-        complete: ()=> this.router.navigateByUrl("/")
+        complete: ()=> {
+          this.employeeService.getAllEmployees().subscribe();
+          this.router.navigateByUrl("/")
+          }
         }
       )
   }
