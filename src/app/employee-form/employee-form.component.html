@@ -1,0 +1,45 @@
+<div class="container my-3">
+  <div class="row">
+    <div class="card col-md-6 offset-md-3">
+      <div class="card-header">
+        <h3>Create Employee</h3>
+      </div>
+      <form [formGroup]="empForm">
+        <div class="mb-3">
+          <label class="form-label">FirstName</label>
+          <input
+            class="form-control {{first_name['touched'] && first_name.errors?.['required']?'is-invalid':''}}"
+            type="text"
+            formControlName="first_name"
+          />
+          @if (first_name['touched'] && first_name.errors?.['required']) {
+          <small class="invalid-feedback">FirstName is Required</small>
+          }
+        </div>
+        <div class="mb-3">
+          <label class="form-label">LastName</label>
+          <input
+            class="form-control {{last_name['touched'] && last_name.errors?.['required']?'is-invalid':''}}"
+            type="text"
+            formControlName="last_name"
+          />
+          @if (last_name['touched'] && last_name.errors?.['required']) {
+          <small class="invalid-feedback">LastName is Required</small>
+          }
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input
+            class="form-control {{email['touched'] && email.errors?.['required']?'is-invalid':''}}"
+            type="email"
+            formControlName="email"
+          />
+          @if (email['touched'] && email.errors?.['required']) {
+          <small class="invalid-feedback">Email is Required</small>
+          }
+        </div>
+        <button [disabled]="!empForm.valid" (click)="createEmployee()" class="btn btn-primary">Save Employee</button>
+      </form>
+    </div>
+  </div>
+</div>

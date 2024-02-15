@@ -1,0 +1,32 @@
+<div class="container my-5">
+  <button [routerLink]="['/employee-form']" class="btn btn-primary">Create New Employee</button>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+            <h3>Employee Table</h3>
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>FirstName</th>
+              <th>lastName</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (emp of (employees$ | async); track $index) {
+            <tr>
+              <td>{{ emp.id }}</td>
+              <td>{{ emp.first_name }}</td>
+              <td>{{ emp.last_name }}</td>
+              <td>{{ emp.email }}</td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
